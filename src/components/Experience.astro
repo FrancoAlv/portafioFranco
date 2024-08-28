@@ -1,0 +1,37 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "Ingeniero de Software Android",
+    company: "NTT DATA",
+    description:
+      "Lidero el desarrollo de aplicaciones móviles con Kotlin y Flutter, promoviendo prácticas de código limpio y seguro. Fomento un entorno colaborativo mediante la metodología Scrum y propongo nuevas ideas de arquitectura y seguridad cibernética.",
+    link: "https://www.nttdata.com", // Cambia este enlace si tienes uno específico para tu perfil o la empresa.
+  },
+  {
+    date: "Octubre 2022",
+    title: "Desarrollador Full Stack",
+    company: "Restaurant.pe",
+    description:
+      "Desarrollo del módulo de entrega con Angular, optimización de procesos back-end, y liderazgo en la integración de soluciones técnicas con requisitos comerciales. Mi capacidad para motivar y mentorizar a mis colegas resalta en situaciones de alta presión.",
+  },
+  {
+    date: "Marzo 2021 - Presente",
+    title: "Desarrollador Freelance",
+    company: "Proyectos Varios",
+    description:
+      "He trabajado en una variedad de proyectos que abarcan desde aplicaciones móviles hasta sistemas web, utilizando tecnologías como Flutter y Android. Un proyecto destacado es la aplicación ArticGlobos, publicada en Google Play Store.",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

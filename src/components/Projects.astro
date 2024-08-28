@@ -1,0 +1,115 @@
+---
+import GitHub from "./icons/GitHub.astro"
+import Flutter from "./icons/Flutter.astro" // Supongamos que tienes un ícono de Flutter
+import Android from "./icons/Android.astro" // Supongamos que tienes un ícono de Android
+import Link from "./icons/Link.astro"
+import LinkButton from "./LinkButton.astro"
+
+const TAGS = {
+  FLUTTER: {
+    name: "Flutter",
+    class: "bg-blue-500 text-white",
+    icon: Flutter,
+  },
+  ANDROID: {
+    name: "Android",
+    class: "bg-green-500 text-white",
+    icon: Android,
+  },
+}
+
+const PROJECTS = [
+  {
+    title: "Base Project Flutter",
+    description:
+      "Un proyecto base en Flutter diseñado para demostrar el uso de la arquitectura limpia y TDD (Desarrollo Guiado por Pruebas). Enfocado en la escalabilidad y mantenibilidad, utilizando diversas librerías y patrones.",
+    link: "https://github.com/FrancoAlv/base_proyect_flutter",
+    github: "https://github.com/FrancoAlv/base_proyect_flutter",
+    image: "/projects/base_proyect_flutter.webp", // Asegúrate de reemplazar con la ruta correcta de tu imagen
+    tags: [TAGS.FLUTTER],
+  },
+  {
+    title: "ArticGlobos",
+    description:
+      "Aplicación móvil para la gestión y venta de manualidades, publicada en Google Play Store. Desarrollada utilizando Flutter y Firebase para el backend.",
+    link: "https://play.google.com/store/apps/details?id=com.creativa.articglobos",
+    github: "https://github.com/FrancoAlv/ArticGlobos",
+    image: "/projects/articglobos.webp", // Asegúrate de reemplazar con la ruta correcta de tu imagen
+    tags: [TAGS.FLUTTER, TAGS.ANDROID],
+  },
+  {
+    title: "AlvMapperFranco",
+    description:
+      "Un decorador personalizado para mapeo en proyectos Java, diseñado para simplificar y mejorar la eficiencia del mapeo de datos.",
+    link: "https://github.com/FrancoAlv/AlvMapperFranco",
+    github: "https://github.com/FrancoAlv/AlvMapperFranco",
+    image: "/projects/alvmapperfranco.webp", // Asegúrate de reemplazar con la ruta correcta de tu imagen
+    tags: [TAGS.ANDROID],
+  },
+  {
+    title: "DragDroid",
+    description:
+      "Proyecto de apoyo en el desarrollo de una aplicación de arrastrar y soltar en Android. Contribuciones en la implementación de la funcionalidad de arrastre y diseño de interfaces de usuario.",
+    link: "https://github.com/brunonavarro/DragDroid",
+    github: "https://github.com/brunonavarro/DragDroid",
+    image: "/projects/dragdroid.webp", // Asegúrate de reemplazar con la ruta correcta de tu imagen
+    tags: [TAGS.ANDROID],
+  },
+]
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+      <div class="w-full md:w-1/2">
+        <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+          <img 
+            alt={title} 
+            class="object-cover object-center w-full h-full transition duration-500 md:group-hover:scale-105" 
+            loading="lazy" 
+            src={image} 
+            style="aspect-ratio: 16/9;"
+          />
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 md:max-w-lg">
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          {title}
+        </h3>
+        <div class="flex flex-wrap mt-2">
+          <ul class="flex flex-row mb-2 gap-x-2">
+            {tags.map((tag) => (
+              <li>
+                <span
+                  class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                >
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+          <footer class="flex items-end justify-start mt-4 gap-x-4">
+            {github && (
+              <LinkButton href={github}>
+                <GitHub class="size-6" />
+                Code
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton href={link}>
+                <Link class="size-4" />
+                Preview
+              </LinkButton>
+            )}
+          </footer>
+        </div>
+      </div>
+    </article>
+    ))
+  }
+</div>
